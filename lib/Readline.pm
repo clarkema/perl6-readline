@@ -699,7 +699,10 @@ class Readline:ver<0.1.5> {
         # set version to v0.0 so we can check if it was found
         $version = v0.0;
         # homebrew directory
-        @library-path = ('/usr/local/opt/readline/lib')
+        @library-path = $*SPEC.join($,
+          (%*ENV<HOMEBREW_PREFIX> || '/usr/local'),
+          'opt/readline/lib'
+        )
     }
     }
 
