@@ -682,9 +682,11 @@ class Readline:ver<0.1.5> {
       '/usr/lib',              # Generic path
       '/lib',                  # even more generic
 
-      # macos specific paths
-      '/usr/local/opt/readline/lib', # homebrew directory
-      '/opt/local/lib'               # macports directory
+      # macOS specific paths
+      $*SPEC.join($,
+                  %*ENV<HOMEBREW_PREFIX> || '/usr/local',
+                  'opt/readline/lib'), # homebrew directory
+      '/opt/local/lib',                # macports directory
     );
     my @library-path = grep { .IO.e }, LIBRARY-PATHS;
 
