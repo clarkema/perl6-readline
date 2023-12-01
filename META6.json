@@ -1,5 +1,5 @@
 {
-  "auth" : "cpan:clarkema",
+  "auth" : "zef:clarkema",
   "authors" : [
     "Jeffrey Goff <drforr@pobox.com>",
     "Daniel Lathrop <dwl@foo.ist>",
@@ -30,5 +30,5 @@
   "test-depends" : [
     "Test"
   ],
-  "version" : "0.1.6"
+  "version" : "0.1.7"
 }

@@ -1,6 +1,10 @@
 Revision history for Readline
 
 {{$NEXT}}
+0.1.7 2023-12-01T22:56:00+0:00
+    - Support 'new' Homebrew prefix on Darwin
+    - Experimental support for Nix environments on Darwin
+
 0.1.6 2020-09-12T15:20:00+0:00
 
 0.1.5  2019-02-25T09:49:54+09:00
