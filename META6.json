@@ -1,14 +1,15 @@
 {
-  "auth" : "cpan:fooist",
+  "auth" : "cpan:clarkema",
   "authors" : [
     "Jeffrey Goff <drforr@pobox.com>",
-    "Daniel Lathrop <dwl@foo.ist>"
+    "Daniel Lathrop <dwl@foo.ist>",
+    "Mike Clarke <clarkema@clarkema.org>"
   ],
   "build-depends" : [
     "LibraryCheck"
   ],
   "depends" : [ ],
-  "description" : "Perl 6 interface to GNU Readline, the CLI-based line reading library",
+  "description" : "Raku interface to GNU Readline, the CLI-based line reading library",
   "license" : "Artistic-2.0",
   "meta6" : "0",
   "name" : "Readline",
@@ -17,9 +18,9 @@
     "Readline" : "lib/Readline.pm"
   },
   "resources" : [ ],
-  "source-url" : "https://github.com/fooist/perl6-readline.git",
+  "source-url" : "https://github.com/clarkema/raku-readline.git",
   "support" : {
-    "source" : "https://github.com/fooist/perl6-readline"
+    "source" : "https://github.com/clarkema/raku-readline"
   },
   "tags" : [
     "terminal",
