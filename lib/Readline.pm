@@ -693,17 +693,23 @@ class Readline:ver<0.1.5> {
         tgetnum('');
       }
       when 'darwin' {
-        # needs homebrew installed version of readline
-        # macOS ships with incompatible libedit
-        $library-match = rx/:i libreadline\.(\d+)\.dylib $/;
-        # set version to v0.0 so we can check if it was found
-        $version = v0.0;
-        # homebrew directory
-        @library-path = $*SPEC.join($,
-          (%*ENV<HOMEBREW_PREFIX> || '/usr/local'),
-          'opt/readline/lib'
-        )
-    }
+        if $*EXECUTABLE.starts-with("/nix/store") {
+          $version = v8;
+          @library-path = %*ENV<LD_LIBRARY_PATH>.split(":");
+        }
+        else {
+          # needs homebrew installed version of readline
+          # macOS ships with incompatible libedit
+          $library-match = rx/:i libreadline\.(\d+)\.dylib $/;
+          # set version to v0.0 so we can check if it was found
+          $version = v0.0;
+          # homebrew directory
+          @library-path = $*SPEC.join($,
+            (%*ENV<HOMEBREW_PREFIX> || '/usr/local'),
+            'opt/readline/lib'
+          )
+        }
+      }
     }
 
     # Search each of the LIBRARY-PATHS paths for libreadline.
