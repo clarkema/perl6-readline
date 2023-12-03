@@ -8,7 +8,7 @@ use NativeCall;
 
 =begin NAME
 
-Readline - GNU Readline binding for perl6
+Readline - GNU Readline binding for Raku
 
 =end NAME
 
