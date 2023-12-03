@@ -687,7 +687,7 @@ class Readline:ver<0.1.5> {
     given $*VM.osname {
       when 'openbsd' {
         $library = 'ereadline';
-        $library-match = rx/:i libereadline\.so\.(\d+) $/;
+        $library-match = rx/:i libereadline\.so\.(<[ \d . ]>+) $/;
         $version = v1.0;
         my sub tgetnum(Str --> int32) is native('ncurses') { * }
         tgetnum('');
