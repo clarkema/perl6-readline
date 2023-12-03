@@ -698,16 +698,21 @@ class Readline:ver<0.1.5> {
           @library-path = %*ENV<LD_LIBRARY_PATH>.split(":");
         }
         else {
-          # needs homebrew installed version of readline
-          # macOS ships with incompatible libedit
+          # macOS ships with incompatible libedit, so we need readline
+          # from either Homebrew or MacPorts
           $library-match = rx/:i libreadline\.(\d+)\.dylib $/;
           # set version to v0.0 so we can check if it was found
           $version = v0.0;
-          # homebrew directory
-          @library-path = $*SPEC.join($,
-            (%*ENV<HOMEBREW_PREFIX> || '/usr/local'),
-            'opt/readline/lib'
-          )
+
+          @library-path = grep { .IO.e }, [
+            # Homebrew, legacy and current hierarchies
+            $*SPEC.join($,
+                (%*ENV<HOMEBREW_PREFIX> || '/usr/local'),
+                'opt/readline/lib'
+            ),
+            # MacPorts
+            "/opt/local/lib"
+          ];
         }
       }
     }
@@ -734,10 +739,11 @@ class Readline:ver<0.1.5> {
         }
       }
       when rx/"macos" | "darwin"/ {
-        # die if we didn't find sometging
-        # currently only supports the location from Homebrew
+        # die if we didn't find something
+        # currently only supports the location from Homebrew or MacPorts
         if $version ~~ v0.0 {
-          die('On macOS Perl6::Readline requires installing Readline via Homebrew');
+          die('On macOS Raku::Readline requires installing Readline via " ~
+            "Homebrew or MacPorts');
         }
       
         # if we ever support another location, we will need to test where the file is
