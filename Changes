@@ -1,6 +1,10 @@
 Revision history for Readline
 
 {{$NEXT}}
+0.1.8 2023-12-03T20:46:00+0:00
+    - Fix OpenBSD support
+    - Add support for MacPorts on Darwin
+
 0.1.7 2023-12-01T22:56:00+0:00
     - Support 'new' Homebrew prefix on Darwin
     - Experimental support for Nix environments on Darwin
